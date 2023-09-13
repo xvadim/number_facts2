@@ -42,7 +42,7 @@ class _ToolsRow extends StatelessWidget {
         OutlinedButton(
           onPressed: () => context.read<NumberFactViewModel>().loadFact(),
           child: const Text('Random'),
-        )
+        ),
       ],
     );
   }

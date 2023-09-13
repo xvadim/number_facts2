@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../api/logger_interceptor.dart';
 
 @module
 abstract class ApiModule {
@@ -10,7 +13,10 @@ abstract class ApiModule {
       headers: {'Content-Type': 'application/json'},
     );
 
-    return Dio(options);
+    return Dio(options)
+      ..interceptors.addAll(
+        [if (kDebugMode) LoggerInterceptor()],
+      );
   }
 
   static const _endPoint = 'http://numbersapi.com';
