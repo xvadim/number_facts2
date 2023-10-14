@@ -66,6 +66,7 @@ class _FactView extends StatelessWidget {
         ? const Center(child: CircularProgressIndicator())
         : Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(title, style: Theme.of(context).textTheme.titleLarge),
               h22,
