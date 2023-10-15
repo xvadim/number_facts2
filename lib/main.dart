@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
 
 import 'core/injection/injection.dart';
 import 'presentation/main_page.dart';
@@ -11,7 +12,7 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  configureInjection();
+  configureInjection(env: Environment.prod);
 
   runApp(const NumbersFactApp());
 }
