@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 
-import '../application/number_fact_model.dart';
+import '../application/number_fact_controller.dart';
 import '../application/number_fact_state.dart';
 import '../core/constants/sizes.dart';
 import '../core/injection/injection.dart';
@@ -14,9 +14,9 @@ class FactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StateNotifierProvider<NumberFactModel, NumberFactState>(
-      create: (_) =>
-          NumberFactModel(getIt.get<NumberApiRepository>())..loadTodayFact(),
+    return StateNotifierProvider<NumberFactController, NumberFactState>(
+      create: (_) => NumberFactController(getIt.get<NumberApiRepository>())
+        ..loadTodayFact(),
       builder: (_, __) {
         return const Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -45,7 +45,7 @@ class _ToolsRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         OutlinedButton(
-          onPressed: () => context.read<NumberFactModel>().loadFact(),
+          onPressed: () => context.read<NumberFactController>().loadFact(),
           child: const Text('Random'),
         ),
       ],
